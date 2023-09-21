@@ -30,7 +30,7 @@ pour le back :
 1. Clonez ce dépôt vers votre machine locale :
 
    ```shell
-   git clone https://github.com/HarveyBrenton/garage_parrot.git
+   git clone https://github.com/HarveyBrenton/parrot-ecf.git
 
 ## Fonctionnalités
 # US1. Se connecter
