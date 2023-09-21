@@ -93,13 +93,13 @@ foreach ($employeeData as $data) {
         $existingVehicles = array_column($vehicles, 'title');
 
         $vehicleData = array(
-            array("Peugeot 308", "22500", "2020", "22800", 'assets\img\1-peugeot-308.jpeg', 'assets\img\1.2-peugeot-308.jpeg', ""),
-            array("Citroen C3", "5990", "2012", "70000", 'assets\img\2-citroen-c3.jpeg', 'assets\img\2.2-citroen-c3.jpeg', ""),
-            array("Mercedes AMG", "16200", "2014", "86500", 'assets\img\3-mercedes-amg.jpeg', 'assets\img\3.2-mercedes-amg.jpeg', ""),
-            array("Clio 3", "3490", "2006", "143000", 'assets\img\4-clio-3.jpeg", "assets\img\4.2-clio-3.jpeg', ""),
-            array("Peugeot 5008", "22000", "2018", "126000", 'assets\img\5-peugeot-5008.jpeg', 'assets\img\5.2-peugeot-5008.jpeg', ""),
-            array("Mini Cooper", "20990", "2019", "33703", 'assets\img\6-mini_cooper.jpeg', 'assets\img\6.2-mini_cooper.jpeg', "")
-        );     
+            array("Peugeot 308", "22500", "2020", "22800", 'assets/img/1-peugeot-308.jpeg', 'assets/img/1.2-peugeot-308.jpeg', ""),
+            array("Citroen C3", "5990", "2012", "70000", 'assets/img/2-citroen-c3.jpeg', 'assets/img/2.2-citroen-c3.jpeg', ""),
+            array("Mercedes AMG", "16200", "2014", "86500", 'assets/img/3-mercedes-amg.jpeg', 'assets/img/3.2-mercedes-amg.jpeg', ""),
+            array("Clio 3", "3490", "2006", "143000", 'assets/img/4-clio-3.jpeg", "assets/img/4.2-clio-3.jpeg', ""),
+            array("Peugeot 5008", "22000", "2018", "126000", 'assets/img/5-peugeot-5008.jpeg', 'assets/img/5.2-peugeot-5008.jpeg', ""),
+            array("Mini Cooper", "20990", "2019", "33703", 'assets/img/6-mini_cooper.jpeg', 'assets/img/6.2-mini_cooper.jpeg', "")
+        );   
     
         foreach ($vehicleData as $data) {
             $carTitle = $data[0];
