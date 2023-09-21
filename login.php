@@ -24,7 +24,7 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 
 // Vérifier l'administrateur
-$stmt = $conn->prepare("SELECT * FROM Admin WHERE email = :email LIMIT 1");
+$stmt = $conn->prepare("SELECT * FROM admin WHERE email = :email LIMIT 1");
 $stmt->bindParam(':email', $email, PDO::PARAM_STR);
 $stmt->execute();
 $adminResult = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -42,7 +42,7 @@ if ($adminResult && password_verify($password, $adminResult['password'])) {
 }
 
 // Vérifier l'employé
-$stmt = $conn->prepare("SELECT * FROM Employees WHERE email = :email LIMIT 1");
+$stmt = $conn->prepare("SELECT * FROM employees WHERE email = :email LIMIT 1");
 $stmt->bindParam(':email', $email, PDO::PARAM_STR);
 $stmt->execute();
 $employeeResult = $stmt->fetch(PDO::FETCH_ASSOC);
