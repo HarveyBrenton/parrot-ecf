@@ -29,11 +29,11 @@ $adminPassword = password_hash("admin", PASSWORD_DEFAULT);
 $adminFound = false;
 
 // Vérifier si le compte administrateur existe déjà
-$stmt = $conn->prepare("SELECT * FROM Admin");
+$stmt = $conn->prepare("SELECT * FROM admin");
 $stmt->execute();
 if ($stmt->rowCount() === 0) {
     // Le compte administrateur n'existe pas, l'insérer dans la base de données
-    $stmt = $conn->prepare("INSERT INTO Admin (first_name, last_name, email, password) VALUES (:firstName, :lastName, :email, :password)");
+    $stmt = $conn->prepare("INSERT INTO admin (first_name, last_name, email, password) VALUES (:firstName, :lastName, :email, :password)");
     $stmt->bindParam(':firstName', $adminFirstName, PDO::PARAM_STR);
     $stmt->bindParam(':lastName', $adminLastName, PDO::PARAM_STR);
     $stmt->bindParam(':email', $adminEmail, PDO::PARAM_STR);
@@ -63,11 +63,11 @@ foreach ($employeeData as $data) {
     $password = password_hash($data[3], PASSWORD_DEFAULT);
 
     // Vérifier si le compte employé existe déjà
-    $stmt = $conn->prepare("SELECT * FROM Employees WHERE email = :email");
+    $stmt = $conn->prepare("SELECT * FROM employees WHERE email = :email");
     $stmt->bindParam(':email', $email);
     $stmt->execute();
     if ($stmt->rowCount() === 0) {
-            $stmt = $conn->prepare("INSERT INTO Employees (first_name, last_name, email, password, admin_id) VALUES (:firstName, :lastName, :email, :password, :adminId)");
+            $stmt = $conn->prepare("INSERT INTO employees (first_name, last_name, email, password, admin_id) VALUES (:firstName, :lastName, :email, :password, :adminId)");
             $stmt->bindParam(':firstName', $firstName, PDO::PARAM_STR);
             $stmt->bindParam(':lastName', $lastName, PDO::PARAM_STR);
             $stmt->bindParam(':email', $email, PDO::PARAM_STR);
@@ -222,7 +222,7 @@ foreach ($employeeData as $data) {
     //REVIEWS
     try {
         // Vérifier si la table REVIEWS est vide
-        $stmt = $conn->query("SELECT COUNT(*) FROM Reviews");
+        $stmt = $conn->query("SELECT COUNT(*) FROM reviews");
         $count = $stmt->fetchColumn();
     
         // Vérifier si les REVIEWS existent déjà
@@ -234,7 +234,7 @@ foreach ($employeeData as $data) {
             ];
     
             foreach ($reviewsData as $data) {
-                $stmt = $conn->prepare("INSERT INTO Reviews (rating, comment, reviewer_name, created_at, approved) VALUES (:rating, :comment, :reviewer_name, :created_at, :approved)");
+                $stmt = $conn->prepare("INSERT INTO reviews (rating, comment, reviewer_name, created_at, approved) VALUES (:rating, :comment, :reviewer_name, :created_at, :approved)");
                 $stmt->bindValue(':rating', $data['rating'], PDO::PARAM_INT);
                 $stmt->bindValue(':comment', $data['comment'], PDO::PARAM_STR);
                 $stmt->bindValue(':reviewer_name', $data['reviewer_name'], PDO::PARAM_STR);
