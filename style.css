@@ -1,0 +1,2041 @@
+body {
+    margin-left: 0rem;
+    margin-right: 0rem;
+    padding: 0;
+    font-family: 'Barlow', sans-serif;
+    background-image: linear-gradient(to right, #1a1a1a, rgb(74 74 74), #1a1a1a);
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+
+  h1, h2 {
+    font-family: 'Rajdhani', sans-serif;
+    text-align: center;
+    color: #d92332;
+  }
+
+  h3 {
+    color: #d94350;
+  }
+
+  p {
+    color: white;
+  }
+
+  a {
+    text-decoration: none;
+    color: white;
+  }
+
+
+/* Styles pour l'en-tête */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 80%;
+  padding: 0.2rem 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+}
+
+header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 111.5%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(50px);
+  z-index: -1;
+}
+
+header::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 111.5%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: 0.5s ease;
+}
+
+header:hover::after {
+  left: 100%;
+}
+
+/* Styles pour le logo */
+.logo img {
+  width: 100px;
+  height: auto;
+  object-fit: cover;
+}
+
+.navbar a,
+.navbarAccount a {
+  font-size: 1.15rem;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  margin-left: 2.5rem;
+}
+
+#check {
+  display: none;
+}
+
+.icons {
+  position: absolute;
+  right: 5%;
+  font-size: 2.8rem;
+  color: #fff;
+  cursor: pointer;
+  display: none;
+}
+
+/* RESPONSIVE NAVBAR */
+@media (min-width: 1014px) and (max-width: 1134px) {
+  .navbar a {
+    margin-left: 1.5rem;
+  }
+}
+
+@media (max-width: 1134px) {
+
+  .navbar a {
+    margin-left: 1.5rem;
+  }
+  
+  .icons {
+    display: inline-flex;
+  }
+
+  #check:checked~.icons #menu-icon {
+    display: none;
+  }
+
+  .icons #close-icon {
+    display: none;
+  }
+
+  #check:checked~.icons #close-icon {
+    display: block;
+  }
+
+  .navbar,
+  .navbarAccount {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 111.5%;
+    height: 0;
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(50px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: 0.3s ease;
+  }
+
+  #check:checked~.navbar {
+    height: 17.7rem;
+  }
+
+  .navbar a,
+  .navbarAccount a {
+    display: block;
+    font-size: 1.1rem;
+    margin: 1.5rem 0;
+    text-align: center;
+    transform: translateY(-50px);
+    opacity: 0;
+    transition: .3s ease;
+  }
+
+  #check:checked~.navbar a {
+    transform: translateY(0);
+    opacity: 1;
+    transition-delay: calc(.15s * var(--i));
+  }
+}
+
+
+
+
+
+
+
+/* CSS pour la section d'accueil */
+
+#accueil {
+  position: relative;
+  height: 35rem;
+  max-height: 100vh;
+  width: 100%;
+}
+
+.banner {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.banner-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.banner-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 28rem;
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  text-align: center;
+  padding-bottom: 4rem;
+}
+
+.banner-content a {
+  text-decoration: none;
+  color: white;
+  padding: 0.4rem;
+  background-color: #d92332;
+  border-radius: 0.2rem;
+}
+
+.banner-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.banner-subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+}
+
+
+/*RESPONSIVE BANNER*/
+@media (max-width: 728px) {
+  .banner-content {
+    max-width: 22rem;
+  }
+}
+
+
+/* SECTION SERVICES - ACCUEIL + COMPTE ADMIN */
+.services-form-container h3,
+.create-account-container h3,
+.updateHour-form-container h3 {
+  text-align: center;
+}
+
+.services-container,
+.services-container-admin {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.services {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.service {
+  text-align: center;
+  margin: 0.5rem;
+  width: 23.33%;
+  max-width: 100%;
+  padding: 2rem;
+  background-color: transparent;
+  border-width: 4px;
+  border-style: solid;
+  border-image-source: radial-gradient(#d92332, #1f1f1f, #d92332);
+  border-image-slice: 1;
+  border-radius: 10px;
+  height: 13rem;
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+
+.service-admin {
+  text-align: center;
+  margin: 0.5rem;
+  width: 23.33%;
+  max-width: 100%;
+  padding: 2rem;
+  background-color: transparent;
+  border-width: 4px;
+  border-style: solid;
+  border-image-source: radial-gradient(#d92332, #1f1f1f, #d92332);
+  border-image-slice: 1;
+  border-radius: 10px;
+  height: 13rem;
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+
+.service-admin {
+  background: #d9d9d9;
+    display: flex;
+    flex-direction: column;
+    height: 25rem;
+}
+
+.service:hover,
+.service-admin:hover{
+  transform: scale(1.02);
+}
+
+.service-admin label {
+  margin-bottom: 0.5rem;
+}
+
+.btn-service-update {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.btn-service-update button{
+  background: rgb(186, 0, 0);
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.service-img{
+  width: 100%;
+}
+
+.service-img img {
+  width: 100px;
+  height: auto;
+}
+
+.service h3 {
+  margin-top: 10px;
+}
+
+.service p {
+  color: white;
+}
+
+
+/* RESPONSIVE SERVICES SECTION */
+@media (max-width: 1404px) {
+  .service {
+    width: 20%;
+    height: 16rem;
+    padding: 1.5rem;
+  }
+
+  .service-admin {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 1057px) {
+  .service {
+    width: 23%;
+    height: 18rem;
+    padding: 1rem;
+  }
+
+}
+
+
+@media (max-width: 936px) {
+  .services {
+    flex-direction: column;
+    gap: 2rem;
+    margin-left: 5rem;
+    margin-right: 5rem;
+  }
+
+  .service {
+    width: 100%;
+    height: auto;
+    padding: 0.5rem;
+  }
+
+  .service-admin {
+    width: 50%;
+    height: auto;
+    padding: 0.5rem;
+  }
+
+}
+
+
+/* CSS pour la section des véhicules d'occasion */
+
+.vehicle {
+  padding-bottom: 1rem;
+  border-radius: 5px;
+  background: #0e0e0e;
+  box-shadow: 0px 0px 3px black;
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+
+.vehicle:hover {
+  transform: scale(1.02);
+}
+
+
+.vehicles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.vehicle-list {
+  margin: 1.5rem;
+}
+
+.vehicle img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 5px 5px 0px 0px;
+}
+
+.vehicle h3 {
+  margin-top: 10px;
+  margin-bottom: 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #d92332;
+  margin-right:  1rem;
+}
+
+.text-content {
+  margin-left: 1rem;
+}
+
+.text-content p {
+  color: white;
+  font-weight: 700;
+  line-height: 1.5rem;
+  margin-top: 1rem;
+  padding-top: 0;
+  text-align: start;
+}
+
+.detail-link {
+  text-decoration: none;
+  color: #d92332;
+  font-weight: 700;
+}
+
+.all-cars {
+  text-align: center;
+
+}
+
+.all-cars a {
+  background: #d92332;
+    color: white;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    width: 2rem;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 900;
+  }
+
+
+  .separator-index {
+    margin: 1rem;
+    padding: 0.3rem;
+  }
+
+  .line-reviews-section {
+    width: 10rem;
+    height: 1px;;
+    background: white;
+  }
+
+
+
+/* Styles pour la version responsive */
+
+@media screen and (max-width: 768px) {
+  .vehicles {
+    grid-template-columns: 1fr;
+  }
+}
+
+  
+  
+
+/* Section d'ajout d'un avis */
+.reviews-title {
+  margin-top: 2rem;
+}
+
+.reviews-title p {
+  text-align: center;
+  margin-bottom: 1rem;
+
+}
+
+.reviews-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-reviews {
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-reviews form {
+  padding: 2rem;
+  background-color: #d9d9d9;
+  border-radius: 0.2rem;
+  max-height: 30rem;
+}
+
+.add-review form {
+  display: flex;
+  flex-direction: column;
+}
+
+.select-rating {
+  height: 30px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group.btn-form-submit {
+  text-align: center;
+}
+
+.form-group.group-form-rate{
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group.group-form-name{
+  display: flex;
+  flex-direction: column;
+}
+
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input[type="text"] {
+  border: 1px solid #666;
+  width: 245px;
+  height: 51px;
+}
+
+#reviewer_name {
+  border: 1px solid #666;
+  width: 245px;
+  height: 31px;
+}
+
+.form-group textarea {
+  border: 1px solid #666;
+  width: 245px;
+  height: 51px;
+}
+
+.form-group input[type="submit"] {
+  background-color: #d94350;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+/* SECTION SWIPER */
+.testimonial-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  width: 80%;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.testimonial-box p {
+  color: black;
+  line-height: 1.7rem;
+  padding-top: 0.5rem;
+  font-weight: 600;
+}
+      
+.swiper-container {
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+}
+      
+.swiper {
+  width: 100%;
+  padding: 50px 0;
+}
+      
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 30rem;
+  height: 100%;
+  background: #ccc;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+  filter: blur(1px);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.swiper-slide-background {
+  width: 30rem;
+  height: 100%;
+}
+  
+  .testimonial-content {
+    word-wrap: break-word;
+  }
+        
+  .swiper-slide-active {
+    filter: blur(0px);
+  }
+  
+  .testimonial-box {
+    position: relative;
+    width: 100%;
+    padding: 2rem;
+    padding-top: 2rem;
+  }
+        
+  .testimonial-box .quote {
+    position: absolute;
+    height: 5rem;
+    width: 5rem;
+    right: 5.5rem;
+    top: 2rem;
+    opacity: 0.5;
+  }
+        
+  .testimonial-box .testimonial-details {
+    display: flex;
+    align-items: center;
+    margin-top: 2rem;
+  }
+        
+  .testimonial-box .testimonial-details .img-box {
+    position: relative;
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 1rem;
+  }
+        
+  .testimonial-box .testimonial-details .img-box img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+        
+  .testimonial-box .testimonial-details h3 {
+    font-size: 1.6rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    color: #d92332;
+    line-height: 1.1em;
+  }
+        
+  .testimonial-box .testimonial-details h3 span {
+    font-size: 1.2rem;
+    color: black;
+  }
+        
+  .swiper-container-3d .swiper-slide-shadow-left,
+  .swiper-container-3d .swiper-slide-shadow-right {
+    background-image: none;
+  }
+  
+  .testimonial-content p {
+    margin-right: 2rem;
+  margin-top: -0.2rem;
+  }
+  
+  
+  h3 .verified {
+    font-weight: bold;
+    font-style: italic;
+    font-size: 1.25rem;
+  }
+  
+  h3 .verified-note {
+  margin-left: 0.2rem;
+    font-size: 5rem;
+  }
+
+  /*RESPONSIVE SWIPER + ADD REVIEW*/
+  @media (max-width: 1024px) {
+    .swiper-container,
+    .testimonial-container {
+      width: 100%;
+    }
+
+    .reviews-container {
+    flex-direction: column;
+    order:1;
+    }
+
+    .container-reviews {
+      margin-left: -3rem;
+  }
+
+  .container-reviews form {
+    max-height: 22rem;
+  }
+
+    .add-review {
+      order:2;
+    }
+ }
+
+  @media (max-width: 768px) {
+    .swiper-container,
+    .testimonial-container {
+      width: 100%;
+    }
+
+    .reviews-container {
+      flex-direction: column;
+      order:1;
+    }
+
+    .container-reviews form {
+      max-height: 22rem;
+    }
+
+    .container-reviews {
+    margin-left: -3.5rem;
+}
+
+    .add-review {
+      order:2;
+    }
+
+  .testimonial-container {
+    width: 100%;
+    }
+ }
+
+ @media (max-width: 500px) {
+  .swiper-container,
+  .testimonial-container {
+    padding-top: 0rem;
+    width: 100%;
+  }
+
+  .testimonial-content {
+    word-wrap: break-word;
+    max-width: 25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 5rem;
+    margin-right: 3.9rem;
+}
+
+.testimonial-box img {
+  margin-right: 3rem;
+}
+
+.testimonial-box .testimonial-details {
+  display: flex;
+  align-items: center;
+  margin-top: 2rem;
+  flex-direction: column;
+  justify-content: center;
+}
+
+}
+
+
+
+
+
+
+.account-hour-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: start;
+  gap: 5rem;
+  width: 100%;
+}
+
+.create-account-container {
+  padding: 3rem;
+  background: #d9d9d9;
+  border-radius: 5px;
+}
+
+.create-account-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.create-account-container form label,
+.updateHour-form-container form label {
+  margin-bottom: 0.3rem;
+}
+
+.create-account-container form input,
+.updateHour-form-container form input {
+  height: 20px;
+}
+
+
+
+.updateHour-form-container form input {
+  height: 20px;
+  width: 11rem;
+}
+
+.create-account-container form button,
+.updateHour-form-container form button {
+  background: rgb(186, 0, 0);
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.updateHour-form-container form button {
+  margin-top: 1.5rem;
+  margin-left: 5rem;
+  margin-right: 5rem;
+}
+
+
+.updateHour-form-container {
+  padding: 1rem;
+  background: #d9d9d9;
+  border-radius: 5px;
+}
+
+
+
+
+
+
+
+
+.global-section-container {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 936px) {
+  .global-section-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+  }
+}
+
+
+
+  /* Pied de page */
+  footer {
+    background-color: #f2f2f2;
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    text-align: center;
+    background: black;
+    color: white;
+  }
+  
+  .footer-links ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+ 
+  
+  .footer-links a {
+    text-decoration: none;
+    color: white;
+  }
+  
+  .footer-contact {
+    text-decoration: none;
+  }
+
+  .footer-contact ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  @media (max-width: 768px) {
+    footer {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .footer-links,
+    .footer-contact,
+    .footer-hours {
+      width: 100%;
+    }
+  }
+
+
+
+/* PAGE SERVICE */
+.service-page-container {
+  margin-bottom: 1.5rem;
+  max-width: 100rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 6rem;
+}
+
+
+.service-page {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 40px;
+  gap: 2rem;
+  border-bottom: 1px solid #d92332;
+}
+
+.service-page .left-side:nth-child(2n) {
+  margin-bottom: 20px;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 10rem;
+}
+
+.left-side {
+  margin-bottom: 20px;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  padding-left: 10rem;
+  align-items: flex-start;
+}
+
+
+.service-page .right-side {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-right: 10rem;
+}
+
+.service-page img {
+  display: block;
+  width: 32rem;
+  height: 100%;
+  border-radius: 5.7rem;
+  border: 1px solid #ccc;
+}
+
+.service-page .right-side:nth-child(2n) {
+  margin-bottom: 2rem;
+}
+
+.contact-service {
+  text-align: center;
+}
+
+.contact-service a {
+  text-decoration: none;
+  background: #d92332;
+  color: #fff;
+  padding: 0.4rem;
+  border-radius: 0.2rem;
+}
+
+@media (max-width: 1134px) {
+  .service-page-container {
+    margin-top: 6rem;
+  }
+
+  .service-page {
+    flex-direction: column;
+  }
+
+  .service-page .right-side,
+  .service-page .left-side {
+    width: 60%;
+    flex-direction: column;
+    align-items: center;
+    padding-right: 0;
+    margin-bottom: 0;
+}
+
+.service-page .left-side:nth-child(2n) {
+  margin-bottom: 0;
+  padding-left: 0;
+}
+
+
+.left-side {
+  margin-bottom: 0px;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  padding-left: 0;
+}
+
+
+.service-page .right-side {
+  padding-right: 0;
+}
+}
+
+
+@media (max-width: 632px) {
+  .service-page img {
+    width: 23rem;
+  }
+  }
+
+
+
+
+  
+  /* Section de contact.php */
+  .contact-form-section {
+    margin-top: 5rem;
+  }
+
+.contact-form {
+  max-width: 500px;
+  margin: 1rem auto 1.5rem auto;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  padding: 2rem 2rem 2rem 1rem;
+}
+
+.contact-form p {
+  color: black;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.contact-form form {
+  display: grid;
+  grid-gap: 10px;
+}
+
+.contact-form form h3 {
+  text-align: center;
+  font-weight: 700;
+  margin: 0;
+}
+
+.form-group-contact {
+  display: grid;
+  margin-bottom: 0.5rem;
+}
+
+.contact-form label {
+  font-weight: bold;
+}
+
+.contact-form button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #d94350;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.contact-form button[type="submit"]:hover {
+  background-color: #d94350;
+}
+
+.input-form-name,
+.input-form-surname,
+.input-form-email,
+.input-form-phone {
+  margin-top: 0.3rem;
+  width: 28rem;
+  font-size: 16px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.input-form-msg {
+  margin-top: 0.3rem;
+  width: 30rem;
+  font-size: 16px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  height: 60px;
+}
+
+textarea {
+  resize: none;
+  padding-left: 0.6rem;
+}
+
+/*RESPONSIVE FORM CONTACT*/
+@media (max-width: 564px) {
+  .contact-form {
+    max-width: 80%;
+    padding: 1rem;
+  }
+
+  .input-form-name,
+  .input-form-surname,
+  .input-form-email,
+  .input-form-phone {
+    width: 80%;
+    margin-top: 0.3rem;
+  }
+
+  .input-form-msg {
+    width: 90%;
+    height: auto;
+  }
+}
+
+
+  
+
+  
+
+  
+/* FORMULAIRES */
+.add-review {
+  margin-top: 20px;
+  width: 20%;
+  margin-left: 4rem;
+}
+
+.add-review h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+
+label {
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+
+textarea {
+  height: 150px;
+}
+
+
+
+
+
+
+
+/* CSS pour le carrousel */
+.review {
+  background-color: #d9d9d9;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+
+
+
+
+
+
+
+
+/* PAGE VOITURES OCCASIONS (identique css section voiture de page 'index.php' */
+/* CSS vehicle-list */
+
+
+
+
+
+
+/* FORMULAIRE DE CONNEXION */
+.section_conn_form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 75vh;
+  margin-top: 4rem;
+}
+
+.conn_form {
+  width: 20%;
+  height: auto;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+  padding-right: 2rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  margin-bottom: 2rem;
+  margin-top: 0rem;
+}
+
+.conn_form form {
+  margin-top: 20px;
+}
+
+.conn_form .form-group {
+  margin-bottom: 15px;
+}
+
+.conn_form label {
+  display: block;
+  font-weight: bold;
+}
+
+.conn_form input[type="email"],
+.conn_form input[type="password"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.conn_form button[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 15px;
+  background-color: #d94350;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.conn_form button[type="submit"]:hover {
+  background-color: #d92332;
+}
+
+.filter-value {
+  display: inline-block;
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+.filter-form {
+  margin-left: 1.5rem;
+}
+
+.filter-button {
+  background-color: #d92332;
+  color: #fff;
+  padding: 0.6rem;
+  margin-left: 0.3rem;
+  border-radius: 0.2rem;
+  border: #d92332;
+}
+
+
+
+/*RESPONSIVE CONNEXION PAGE*/
+@media (min-width: 714px) and (max-width:1428px) {
+  .conn_form {
+    width: 30%;
+  }
+}
+
+@media (max-width: 713px) {
+  .conn_form {
+    width: 50%;
+  }
+}
+
+
+
+
+/* CONTACT-ID FORMULAIRE*/
+.contactId-container {
+  margin-top: 2rem;
+}
+
+.contact-details {
+  text-align: center;
+}
+
+.contact-details-title {
+  text-align: center;
+}
+
+.form-group #first_nameID,
+.form-group #last_nameID,
+.form-group #emailID {
+  width: 100%;
+  height: 40px;
+}
+
+.form-group #messageID {
+  height: 70px;
+  width: 100%
+}
+
+.form-group #phonelID {
+  height: 40px;
+  width: 100%
+}
+
+
+
+
+
+
+/* DETAILS PAGE */
+.detail-title {
+  margin-top: 4rem;
+}
+
+.img-container-details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 20px;
+  row-gap: 1.5rem;
+}
+
+.img-details {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.img-details img {
+  width: 30rem;
+  height: auto;
+}
+
+.car-details-info {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-weight: 700;
+}
+
+.car-details-info p {
+  margin-bottom: 10px;
+}
+
+.btn-retour {
+  text-decoration: none;
+  background: #d94350;
+  color: #fff;
+  padding: 0.4rem;
+  border-radius: 0.2rem;
+}
+
+.btn-formulaire {
+  text-decoration: none;
+  background: #d94350;
+  color: #fff;
+  padding: 0.4rem;
+  border-radius: 0.2rem;
+}
+
+.features-detail-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+/* RESPONSIVE DETAILS PAGE */
+@media (max-width: 506px) {
+.img-details img {
+  width: 22rem;
+  height: auto;
+  margin-left: 0.6rem;
+  margin-right: 0.1rem;
+}
+}
+
+/*EQUIPEMENT VOITURE DETAILS PAGE*/
+.ul-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.ul-container ul {
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.ul-container li {
+  width: 45%;
+  margin-bottom: 10px;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  color: white;
+  text-align: center;
+}
+
+/* RESPONSIVE EQUIPEMENT VOITURE DETAILS PAGE*/
+@media (max-width: 564px) {
+  .ul-container {
+    max-width: 100%;
+  }
+
+  .ul-container ul {
+    justify-content: center;
+  }
+
+  .ul-container li {
+    width: 70%;
+  }
+}
+
+
+
+
+/* CARACTERISTIQUE VOITURE*/
+.table-container {
+  display: flex;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+}
+
+table th,
+table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid white;
+  font-weight: 600;
+}
+
+table td:nth-child(odd) {
+  border-right: 1px solid #ababab;
+}
+
+table th {
+  background-color: #f2f2f2;
+}
+
+table tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+table tr:nth-child(even) {
+  color: white;
+  background-color: #545454;
+}
+
+table tr:nth-child(even):hover,
+table tr:nth-child(odd):hover {
+  background-color: #4d4d4d;
+}
+
+.features-detail-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+@media (max-width: 615px) {
+  .table-container {
+    display: flex;
+  }
+
+  .ul-container ul {
+    margin: 1rem;
+  }
+
+  table thead {
+    display: none;
+  }
+
+  table tr {
+    border: 1px solid #ddd;
+  }
+
+  table td {
+    border-bottom: none;
+  }
+
+  table td:before {
+    content: attr(data-label);
+    font-weight: bold;
+    display: inline-block;
+    width: 50%;
+    margin-left: 5px;
+  }
+
+  table td:before {
+    content: none;
+}
+}
+
+/*RESPONSIVE CARACTERISTIQUE VOITURE*/
+@media (max-width: 564px) {
+  .table-container {
+    width: 85%;
+  }
+
+  table td:before {
+    content: none;
+}
+}
+
+
+
+
+
+
+.hour-container {
+  margin-bottom: 1.5rem;
+}
+
+.update_hours-container {
+  margin-bottom: 1.5rem;
+}
+
+
+
+
+
+/*Filter section*/
+
+.filter-section-container {
+  display: flex;
+}
+
+.filter-section {
+  width: 100%;
+  border-radius: 10px;
+  padding: 20px 25px 0px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.filter-container {
+  width: 30%;
+  padding: 2rem;
+  background: #ccc;
+  border: 1px solid #999;
+  padding-top: 0;
+}
+
+
+.filter-content h2 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.mileage-input,
+.year-input,
+.price-input {
+  width: 100%;
+  display: flex;
+  margin: 30px 0 35px;
+}
+
+.mileage-input .mileage-field,
+.year-input .year-field,
+.price-input .price-field {
+  height: 45px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.mileage-field label,
+.year-field label,
+.price-field label {
+  width: 40px;
+  font-size: 19px;
+}
+
+
+.currency-symbol,
+.mileage-symbol {
+  font-size: 23px; 
+  margin-left: 4px;
+  font-weight: 700;
+}
+
+
+.mileage-field input,
+.year-field input,
+.price-field input {
+  height: 40px;
+  width: 100px;
+  outline: none;
+  font-size: 19px;
+  text-align: center;
+  margin-left: 12px;
+  border: 1px solid #999;
+  border-radius: 5px;
+  -moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.mileage-input .separator,
+.year-input .separator,
+.price-input .separator {
+  width: 130px;
+  display: flex;
+  font-size: 19px;
+  align-items: center;
+  justify-content: center;
+}
+
+.mileage-slider,
+.year-slider,
+.price-slider {
+  height: 5px;
+  border-radius: 5px;
+  background: #ddd;
+  position: relative;
+}
+
+.mileage-slider .progress,
+.price-slider .progress,
+.year-slider .progress {
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  height: 5px;
+  border-radius: 5px;
+  background: #d92332;
+}
+
+
+.mileage-range-input,
+.year-range-input,
+.price-range-input {
+  position: relative;
+}
+
+.mileage-range-input input,
+.year-range-input input,
+.price-range-input input {
+  position: absolute;
+  top: -6px;
+  height: 5px;
+  width: 100%;
+  background: none;
+  pointer-events: none;
+  -webkit-appearance: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  pointer-events: auto;
+  background: #d92332;
+}
+
+input[type="range"]::-moz-range-thumb {
+  -webkit-appearance: none;
+  width: 17px;
+  height: 17px;
+  border: none;
+  border-radius: 50%;
+  pointer-events: auto;
+  background: #d92332;
+}
+
+.no-result {
+  text-align: center;
+  font-size: 700;
+  font-size: 3rem;
+  color: #d92332;
+}
+
+.header-vehicles {
+  margin-top: 5.3rem;
+}
+
+@media (max-width: 1747px) {
+  .filter-container {
+    width: 30%;
+    padding: 1rem;
+  }
+
+  .filter-section {
+    justify-content: center;
+    padding-top: 0;
+    padding-left: 0rem;
+    padding-right: 0rem;
+}
+}
+
+@media (max-width: 1638px) {
+  .filter-container {
+    width: 30%;
+    padding: 1rem;
+  }
+
+  .filter-section {
+    justify-content: center;
+    padding-top: 0;
+    padding-left: 0rem;
+    padding-right: 0rem;
+}
+}
+
+@media (max-width: 1382px) {
+  .filter-container {
+    width: 29%;
+    padding: 1rem;
+  }
+
+  .mileage-field input,
+  .year-field input,
+  .price-field input {
+    height: 31px;
+  }
+
+  .filter-section {
+    justify-content: center;
+    padding-top: 0;
+    padding-left: 0rem;
+    padding-right: 0rem;
+}
+
+.mileage-input, .year-input, .price-input {
+  width: 100%;
+  display: flex;
+  margin: 0px 0 14px;
+}
+}
+
+@media (max-width: 1362px) {
+  .mileage-input, .year-input, .price-input {
+    width: 100%;
+    display: flex;
+    margin: 0px 0 14px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .mileage-input .mileage-field, .year-input .year-field, .price-input .price-field {
+    height: 45px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+}
+
+@media (min-width: 762px) and (max-width: 906px) {
+  .filter-container {
+    width: 26.5%;
+    padding: 1rem;
+}
+
+  .mileage-input, .year-input, .price-input {
+    width: 100%;
+    display: flex;
+    margin: 0px 0 14px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .mileage-input .mileage-field, .year-input .year-field, .price-input .price-field {
+    height: 45px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+}
+
+
+@media (max-width: 761px) {
+  .filter-container {
+    width: 60%;
+    padding: 1rem;
+  }
+
+  .filter-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+
+
+
+
+
+
+
+/*DASHBOARD EMPLOYEE*/
+.dashboardEmployee-main {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.dashboardEmployee-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  gap: 3rem;
+  max-width: 100rem;
+}
+
+.addVehicule-employee {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  margin: 2rem;
+}
+
+.addVehicule-employee h3 {
+  text-align: center;
+  color: #d92332;
+}
+
+
+.gestionReview-employee {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  margin: 2rem;
+}
+
+.pagination {
+  text-align: center;
+}
+
+.pagination a {
+  padding-right: 1rem;
+}
+
+.active {
+  color: #d92332;
+  font-weight: 900;
+  font-size: larger;
+}
+
+
+/*SEPARATOR LINE*/
+.separator-section {
+  border-left: 1px solid #d92332;
+  height: 42rem;
+  margin-top: 2rem;
+}
+
+
+
+@media (max-width: 1242px) {
+  .dashboardEmployee-container {
+    flex-direction: column;
+    min-height: 100%;
+    gap: 0;
+    align-items: center;
+  }
+
+  .addVehicule-form {
+    padding: 5rem;
+  }
+
+  .separator-section {
+    display: none;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*VEHICULES OCCASIONS*/
+.addVehicule-form {
+  padding: 2rem;
+  background: #666;
+}
+
+.addVehicule-employee label {
+  color: white;
+}
+
+.addVehicule-employee input {
+  margin-bottom: 1rem;
+  height: 25px;
+}
+
+.addVehicule-employee input[type="submit"] {
+  background: #d92332;
+  color: white;
+  padding-top: 0.5rem;
+  padding-bottom: 1.5rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*EXISTING REVIEWS*/
+.existing-review-container {
+  background: #666;
+  padding: 1rem;
+}
+
+.new-review-container {
+  background: #891e1e;
+  padding: 1rem;
+}
+
+.existing-reviews {
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #d92332;
+}
+
+.existing-reviews h3{
+  text-align: center;
+  color: #d92332;
+}
+
+.new-review-approve{
+  margin-right: 1rem;
+  margin-top: 1rem;
+  background: #5d8106;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.new-review-reject {
+  background: rgb(186, 0, 0);
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
