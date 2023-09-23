@@ -1,4 +1,3 @@
-<!--AJOUT DU COOKIES + HEAD-->
 <?php include './cookies.php'; ?>
 <?php include './header.php'; ?>
 
@@ -83,7 +82,7 @@ try {
 include './config.php';
 
 // Récupérer les avis approuvés depuis la table Reviews
-$stmt = $conn->prepare("SELECT * FROM Reviews WHERE approved = 1");
+$stmt = $conn->prepare("SELECT * FROM reviews WHERE approved = 1");
 $stmt->execute();
 $reviews = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
