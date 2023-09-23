@@ -1,9 +1,4 @@
 # garage_parrot
-ECF
-un fichier readme.md contenant la démarche à suivre pour l’exécution en local
-Ne pas oublier dans ce readme l’explication de la création d’un administrateur
-pour le back-office de l’application web
-
 ## Présentation
 # Projet Garage Automobile - Application Web Vitrine
 
@@ -14,7 +9,7 @@ Ce projet consiste à créer une application web vitrine pour le Garage V. Parro
 Serveur :
 ● Version PHP 8.2
 ● Extension PHP : PDO
-● MariaDB (version 10.11)
+● MariaDB (version 10.6)
 
 Pour le front :
 ● HTML 5
@@ -24,6 +19,7 @@ Pour le front :
 pour le back :
 ● PHP 8.2 sous PDO
 ● MySQL
+● JavaScript
 
 ## Installation
 
@@ -34,16 +30,23 @@ pour le back :
 
 ## Fonctionnalités
 # US1. Se connecter
+'config.php' : modifiez les paramètres suivants afin de vous connecter à votre database SQL :
+$servername = "votre_server";
+$username = "votre_nom_utilisateur";
+$password_db = "votre_mot_de_passe_SQL";
+
 'create_database.sql' : contient la base de données + tables.
 'injectdata.php' : contient l'alimentation de la base de données.
 
 La création de l'administrateur a été crée à partir du fichier 'injectdata.php' (comme pour pour toutes les autres créations fictives pour alimenter la database).
 
-L'administrateur dispose d'un compte préalablement créé :
+# Comptes de l'administrateur
+L'administrateur dispose d'un compte préalablement créé par le fichier 'injectdata.php :
 email : vincent.parrot@example.com
 mot de passe : admin
 
-Vous pouvez également vous connecter en tant qu'employé :
+# Comptes de l'employé
+Vous pouvez également vous connecter en tant qu'employé créé par le fichier 'injectdata.php :
 email : john.doe@example.com
 mot de passe : employe_1
 
