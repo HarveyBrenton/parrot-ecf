@@ -10,7 +10,7 @@ try {
     $errorLog = 'Erreur lors de la connexion à la base de données' . $e->getMessage() . PHP_EOL;
     error_log($errorLog, 3, 'erreurs.log');
 
-    // Redirection vers une page d'erreur personnalisée ou affichage d'un message d'erreur convivial
+    // Redirection vers une page d'erreur personnalisée
     header('Location: ./server_error.php');
     exit;
 }
