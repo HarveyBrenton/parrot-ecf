@@ -76,14 +76,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 // Fonction pour approuver un avis
 function approveReview($conn, $reviewId) {
-    $stmt = $conn->prepare("UPDATE Reviews SET approved = 1 WHERE id = :reviewId");
+    $stmt = $conn->prepare("UPDATE reviews SET approved = 1 WHERE id = :reviewId");
     $stmt->bindParam(':reviewId', $reviewId, PDO::PARAM_INT);
     return $stmt->execute();
 }
 
 // Fonction pour rejeter un avis
 function rejectReview($conn, $reviewId) {
-    $stmt = $conn->prepare("DELETE FROM Reviews WHERE id = :reviewId");
+    $stmt = $conn->prepare("DELETE FROM reviews WHERE id = :reviewId");
     $stmt->bindParam(':reviewId', $reviewId, PDO::PARAM_INT);
     return $stmt->execute();
 }
@@ -129,24 +129,24 @@ $startIndexNew = ($pageNew - 1) * $reviewsPerPageNew;
 
 
 // Récupérer toutes les reviews existantes depuis la table Reviews
-$stmt = $conn->prepare("SELECT * FROM Reviews");
+$stmt = $conn->prepare("SELECT * FROM reviews");
 $stmt->execute();
 $existingReviews = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // Récupérer les nouveaux reviews non approuvés depuis la table Reviews
-$stmt = $conn->prepare("SELECT * FROM Reviews WHERE approved = 0");
+$stmt = $conn->prepare("SELECT * FROM reviews WHERE approved = 0");
 $stmt->execute();
 $newReviews = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
-$stmt = $conn->prepare("SELECT * FROM Reviews LIMIT :startIndex, :reviewsPerPage");
+$stmt = $conn->prepare("SELECT * FROM reviews LIMIT :startIndex, :reviewsPerPage");
 $stmt->bindParam(':startIndex', $startIndexExisting, PDO::PARAM_INT);
 $stmt->bindParam(':reviewsPerPage', $reviewsPerPageExisting, PDO::PARAM_INT);
 $stmt->execute();
 $existingReviews = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
-$stmt = $conn->prepare("SELECT * FROM Reviews WHERE approved = 0 LIMIT :startIndex, :reviewsPerPage");
+$stmt = $conn->prepare("SELECT * FROM reviews WHERE approved = 0 LIMIT :startIndex, :reviewsPerPage");
 $stmt->bindParam(':startIndex', $startIndexNew, PDO::PARAM_INT);
 $stmt->bindParam(':reviewsPerPage', $reviewsPerPageNew, PDO::PARAM_INT);
 $stmt->execute();
@@ -227,7 +227,7 @@ include './header.php';
 <div class="pagination">
     <?php
     // Calculer le nombre total de pages pour les avis existants
-    $stmt = $conn->prepare("SELECT COUNT(*) AS total FROM Reviews");
+    $stmt = $conn->prepare("SELECT COUNT(*) AS total FROM reviews");
     $stmt->execute();
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
     $totalPagesExisting = ceil($result['total'] / $reviewsPerPageExisting);
@@ -268,7 +268,7 @@ for ($i = 1; $i <= $totalPagesExisting; $i++) {
 <div class="pagination">
     <?php
     // Calculer le nombre total de pages pour les nouveaux avis
-    $stmt = $conn->prepare("SELECT COUNT(*) AS total FROM Reviews WHERE approved = 0");
+    $stmt = $conn->prepare("SELECT COUNT(*) AS total FROM reviews WHERE approved = 0");
     $stmt->execute();
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
     $totalPagesNew = ceil($result['total'] / $reviewsPerPageNew);
