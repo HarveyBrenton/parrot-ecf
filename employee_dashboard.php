@@ -75,25 +75,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
 // Fonction pour approuver un avis
-function approveReview($conn, $reviewId) {
-    $stmt = $conn->prepare("UPDATE reviews SET approved = 1 WHERE id = :reviewId");
-    $stmt->bindParam(':reviewId', $reviewId, PDO::PARAM_INT);
+function approve($conn, $Id) {
+    $stmt = $conn->prepare("UPDATE s SET approved = 1 WHERE id = :Id");
+    $stmt->bindParam(':Id', $Id, PDO::PARAM_INT);
     return $stmt->execute();
 }
 
 // Fonction pour rejeter un avis
-function rejectReview($conn, $reviewId) {
-    $stmt = $conn->prepare("DELETE FROM reviews WHERE id = :reviewId");
-    $stmt->bindParam(':reviewId', $reviewId, PDO::PARAM_INT);
+function reject($conn, $Id) {
+    $stmt = $conn->prepare("DELETE FROM s WHERE id = :Id");
+    $stmt->bindParam(':Id', $Id, PDO::PARAM_INT);
     return $stmt->execute();
 }
 
-// Traitement de l'approbation ou du rejet d'un review
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['review_id'])) {
-    $reviewId = $_POST['review_id'];
+// Traitement de l'approbation ou du rejet d'un 
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['_id'])) {
+    $Id = $_POST['_id'];
     
     if (isset($_POST['approve'])) {
-        if (approveReview($conn, $reviewId)) {
+        if (approve($conn, $Id)) {
             header("Location: ./employee_dashboard.php?success=1");
             exit;
         } else {
@@ -102,7 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['review_id'])) {
     }
     
     if (isset($_POST['reject'])) {
-        if (rejectReview($conn, $reviewId)) {
+        if (reject($conn, $Id)) {
             header("Location: ./employee_dashboard.php?success=1");
             exit;
         } else {
@@ -113,22 +113,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['review_id'])) {
 
 
 // Paramètres de pagination pour les avis existants
-$reviewsPerPageExisting = 3; // Nombre d'avis existants à afficher par page
+$sPerPageExisting = 3; // Nombre d'avis existants à afficher par page
 
 // Paramètres de pagination pour les nouveaux avis
-$reviewsPerPageNew = 3; // Nombre de nouveaux avis à afficher par page
+$sPerPageNew = 3; // Nombre de nouveaux avis à afficher par page
 
 $pageExisting = isset($_GET['page_existing']) ? intval($_GET['page_existing']) : 1; // Page actuelle pour les avis existants
 $pageNew = isset($_GET['page_new']) ? intval($_GET['page_new']) : 1; // Page actuelle pour les nouveaux avis
 
 // Calculer l'indice de départ pour la requête SQL pour les avis existants
-$startIndexExisting = ($pageExisting - 1) * $reviewsPerPageExisting;
+$startIndexExisting = ($pageExisting - 1) * $sPerPageExisting;
 
 // Calculer l'indice de départ pour la requête SQL pour les nouveaux avis
-$startIndexNew = ($pageNew - 1) * $reviewsPerPageNew;
+$startIndexNew = ($pageNew - 1) * $sPerPageNew;
 
 
-// Récupérer toutes les reviews existantes depuis la table Reviews
+// Récupérer toutes les s existantes depuis la table s
 $stmt = $conn->prepare("SELECT * FROM reviews");
 $stmt->execute();
 $existingReviews = $stmt->fetchAll(PDO::FETCH_ASSOC);
