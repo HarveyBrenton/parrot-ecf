@@ -1,9 +1,6 @@
 <?php
 // Effectuer la connexion à la base de données
-$servername = "localhost";
-$username = "root";
-$password_db = "";
-$dbname = "garage_parrot";
+include './config.php';
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password_db);
