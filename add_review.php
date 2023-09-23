@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   // Valider et sécuriser les données du formulaire si nécessaire
 
   // Insertion des données dans la table Reviews
-  $stmt = $conn->prepare("INSERT INTO Reviews (rating, reviewer_name, comment) VALUES (:rating, :reviewerName, :comment)");
+  $stmt = $conn->prepare("INSERT INTO reviews (rating, reviewer_name, comment) VALUES (:rating, :reviewerName, :comment)");
   $stmt->bindParam(':rating', $rating);
   $stmt->bindParam(':reviewerName', $reviewerName);
   $stmt->bindParam(':comment', $comment);
