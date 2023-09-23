@@ -10,7 +10,7 @@ $cookieExpiration = time() + (86400 * 30); //Durée de 30 jours
 $cookiePath = "/";
 $cookieDomain = "localhost";
 $cookieSecure = false; // false pour le développement local
-$cookieHttpOnly = true;
+$cookieHttpOnly = false; // false pour le développement local
 
 // Paramétrage du cookie
 setcookie($cookieName, $cookieValue, $cookieExpiration, $cookiePath, $cookieDomain, $cookieSecure, $cookieHttpOnly);
